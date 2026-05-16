@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearCut AI | Pro Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="hero">
+            <h1>Clear<span>Cut</span> AI</h1>
+            <p>Professional Background Removal & Custom Editing</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="glass-card" id="upload-section">
+            <div id="drop-zone" class="drop-zone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                </svg>
+                <p>Drag & drop image or <span>browse</span></p>
+                <input type="file" id="file-input" hidden accept="image/*">
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section class="result-container hidden" id="result-container">
+            <div class="glass-card">
+                <div class="comparison-grid">
+                    <div class="view-box">
+                        <small>Original</small>
+                        <img id="original-preview" src="">
+                    </div>
+                    <div class="view-box result-box" id="canvas-container">
+                        <small>Processed Result</small>
+                        <div id="loading-spinner" class="spinner hidden"></div>
+                        <img id="processed-img" src="">
+                    </div>
+                </div>
+
+                <!-- Original Download (Transparent) -->
+                <div class="button-group main-actions">
+                    <button id="download-btn" class="btn-secondary">Download Transparent PNG</button>
+                    <button id="reset-btn" class="btn-danger">Clear All</button>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Background Editor Tool -->
+                <div id="bg-editor-tools" class="hidden">
+                    <h3 class="tool-title">? Background Editor (New Tool)</h3>
+                    <div class="editor-grid">
+                        <div class="tool-item">
+                            <label>Solid Color</label>
+                            <input type="color" id="bg-color-picker" value="#ffffff">
+                        </div>
+                        <div class="tool-item">
+                            <label>Presets</label>
+                            <div class="preset-options">
+                                <div class="preset-thumb none" data-bg="none">?</div>
+                                <div class="preset-thumb" data-bg="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=500"></div>
+                                <div class="preset-thumb" data-bg="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=500"></div>
+                            </div>
+                        </div>
+                        <div class="tool-item">
+                            <label>Custom BG</label>
+                            <button class="btn-secondary small-btn" onclick="document.getElementById('bg-upload').click()">Upload BG</button>
+                            <input type="file" id="bg-upload" hidden accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <!-- NEW Download for Background Result -->
+                    <div class="button-group editor-actions">
+                        <button id="download-with-bg" class="btn-primary">Download with Background</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+<footer class="glass-footer">
+    <div class="social-links">
+        <a href="#" class="social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="#" class="social-icon" title="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M20 4l-6.768 6.768"></path></svg>
+        </a>
+        <a href="#" class="social-icon" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+    </div>
+    <p>© 2026 ClearCut AI. Built for the Future.</p>
+</footer>
+    </main>
+
+    <!-- Hidden Canvas for merging images -->
+    <canvas id="export-canvas" style="display:none;"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>
