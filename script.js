@@ -35,7 +35,7 @@ async function handleUpload(file) {
     try {
         // 🔄 MODIFIED: Localhost hata kar ab hum Render ke live cloud link par request bhej rahe hain
         // ⚠️ TIP: Render par live hone ke baad jo link milega use "https://clearcut-backend.onrender.com" ki jagah daal dena
-        const response = await fetch('https://clearcut-backend.onrender.com/api/remove-bg', {
+        const response = await fetch('https://clear-cut-ai-backend.onrender.com/api/remove-bg', {
             method: 'POST',
             body: formData
         });
